@@ -25,7 +25,7 @@ $('document').ready(function () {
             handle.next('1-b')
         }, 200);
         setTimeout(function() {
-            handle.next('3-b');
+            handle.next('2-b');
             handle.complete();
         }, 250);
 
@@ -64,7 +64,7 @@ $('document').ready(function () {
             handle.next('1-b')
         }, 200);
         setTimeout(function() {
-            handle.next('3-b');
+            handle.next('2-b');
             handle.complete();
         }, 250);
 
