@@ -132,7 +132,7 @@ $('document').ready(function () {
 });
 ```
 
-# Switch
+# 04 Switch
 
 ```
 $('document').ready(function () {
