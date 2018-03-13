@@ -132,3 +132,68 @@ $('document').ready(function () {
 });
 ```
 
+# Switch
+
+```
+$('document').ready(function () {
+    $('#title').text('SWITCH');
+    $('#demo-img').attr("src", "");
+
+    var a = Rx.Observable.create(function (handle) {
+        console.log('%ccreated outer observable', 'color:red;');
+
+        setTimeout(function () {
+            handle.next('10ms-outer');
+        }, 10);
+
+        setTimeout(function () {
+            handle.next('550ms-outer')
+        }, 600);
+
+        setTimeout(function () {
+            handle.next('950ms-outer');
+            handle.complete();
+        }, 900);
+
+        return function() {
+            console.log('%couter observable complete', 'color:red;');
+        };
+
+    });
+
+    var b = Rx.Observable.create(function (handle) {
+        console.log('%c  inner started', 'color:green;');
+
+        setTimeout(function () {
+            handle.next('  500ms-inner');
+        }, 500);
+
+        setTimeout(function () {
+            handle.next('  1000ms-inner')
+        }, 1000);
+
+        setTimeout(function () {
+            handle.next('  1500ms-inner');
+            handle.complete();
+        }, 1500);
+
+        return function() {
+            console.log('%c  inner complete', 'color:green;');
+        };
+
+    });
+
+
+    a.do(function (val) {
+        console.log(val);
+    }).map(function () {
+        return b;
+    }).switch()
+        .subscribe({
+            next: function (val) {
+                console.log(val);
+            }
+        });
+
+});
+```
