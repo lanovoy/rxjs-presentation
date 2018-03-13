@@ -9,9 +9,11 @@ $('document').ready(function () {
 
     var a = Rx.Observable.create(function(handle) {
         handle.next('0-a');
+
         setTimeout(function() {
             handle.next('1-a')
         }, 200);
+
         setTimeout(function() {
             handle.next('2-a');
             handle.complete();
@@ -21,19 +23,23 @@ $('document').ready(function () {
 
     var b = Rx.Observable.create(function(handle) {
         handle.next('0-b');
+
         setTimeout(function() {
             handle.next('1-b')
         }, 200);
+
         setTimeout(function() {
             handle.next('2-b');
             handle.complete();
-        }, 250);
+        }, 350);
 
     });
 
     Rx.Observable.merge(a,b)
-        .subscribe(function(val) {
-            console.log(val);
+        .subscribe({
+            next: function(val) {
+                console.log(val);
+            }
         });
 
 });
@@ -48,9 +54,11 @@ $('document').ready(function () {
 
     var a = Rx.Observable.create(function(handle) {
         handle.next('0-a');
+        
         setTimeout(function() {
             handle.next('1-a')
         }, 200);
+        
         setTimeout(function() {
             handle.next('2-a');
             handle.complete();
@@ -60,9 +68,11 @@ $('document').ready(function () {
 
     var b = Rx.Observable.create(function(handle) {
         handle.next('0-b');
+        
         setTimeout(function() {
             handle.next('1-b')
         }, 200);
+        
         setTimeout(function() {
             handle.next('2-b');
             handle.complete();
