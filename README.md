@@ -89,7 +89,7 @@ $('document').ready(function () {
 ```
 
 
-# 02 Race
+# 03 Race
 
 ```
 $('document').ready(function () {
@@ -124,7 +124,7 @@ $('document').ready(function () {
 
     });
 
-    Rx.Observable.concat(a,b)
+    Rx.Observable.race(a,b)
         .subscribe(function(val) {
             console.log(val);
         });
