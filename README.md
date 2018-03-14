@@ -88,6 +88,18 @@ $('document').ready(function () {
 });
 ```
 
+## Merge and Concat additional sample
+
+```
+// Simulate HTTP requests
+const getPostOne$ = Rx.Observable.timer(3000)
+    .mapTo('1st finished').startWith('1st started');
+const getPostTwo$ = Rx.Observable.timer(1000)
+    .mapTo('2nd finished').startWith('2nd started');
+
+Rx.Observable.merge(getPostOne$, getPostTwo$)
+    .subscribe(res => console.log(res));
+```
 
 # 03 Race
 
