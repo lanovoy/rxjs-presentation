@@ -1,5 +1,3 @@
-# rxjs-presentation
-
 # Merge
 
 ```
@@ -106,3 +104,58 @@ h.switch().subscribe(val => console.log(val));
 
 ```
 
+# combineLatest
+
+```
+$('document').ready(function () {
+    $('#title').text('COMBINE LATEST');
+    $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*uh5Db_W2CixKpK9LlYkURQ.gif");
+});
+
+const a = Rx.Observable.interval(100).take(3).map((i) => ['0-a','1-a','2-a'][i]);
+const b = Rx.Observable.interval(150).take(3).map((i) => ['0-b','1-b','2-b'][i]);
+
+Rx.Observable.combineLatest(a,b).subscribe(val => console.log(val));
+```
+
+# zip
+
+```
+$('document').ready(function () {
+    $('#title').text('ZIP');
+    $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*Cu-uSXNacbLlpWjm35C3_Q.gif");
+});
+
+const a = Rx.Observable.interval(100).take(3).map((i) => ['0-a','1-a','2-a'][i]);
+const b = Rx.Observable.interval(150).take(3).map((i) => ['0-b','1-b','2-b'][i]);
+
+Rx.Observable.zip(a,b).subscribe(val => console.log(val));
+```
+
+# forkJoin
+
+```
+$('document').ready(function () {
+    $('#title').text('ZIP');
+    $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*dsH5d-_64TXBFlEr7YCAqQ.gif");
+});
+
+const a = Rx.Observable.interval(100).take(3).map((i) => ['0-a','1-a','2-a'][i]);
+const b = Rx.Observable.interval(150).take(3).map((i) => ['0-b','1-b','2-b'][i]);
+
+Rx.Observable.forkJoin(a,b).subscribe(val => console.log(val));
+```
+
+# withLatestFrom
+
+```
+$('document').ready(function () {
+    $('#title').text('ZIP');
+    $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*ZhM7RAp_LctDt7kuOuisGA.gif");
+});
+
+const a = Rx.Observable.interval(100).take(3).map((i) => ['0-a','1-a','2-a'][i]);
+const b = Rx.Observable.interval(150).take(3).map((i) => ['0-b','1-b','2-b'][i]);
+
+b.withLatestFrom(a).subscribe(val => console.log(val));
+```
