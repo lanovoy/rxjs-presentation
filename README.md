@@ -136,7 +136,7 @@ Rx.Observable.zip(a,b).subscribe(val => console.log(val));
 
 ```
 $('document').ready(function () {
-    $('#title').text('ZIP');
+    $('#title').text('FORK JOIN');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*dsH5d-_64TXBFlEr7YCAqQ.gif");
 });
 
@@ -150,7 +150,7 @@ Rx.Observable.forkJoin(a,b).subscribe(val => console.log(val));
 
 ```
 $('document').ready(function () {
-    $('#title').text('ZIP');
+    $('#title').text('WITH LATEST FROM');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*ZhM7RAp_LctDt7kuOuisGA.gif");
 });
 
