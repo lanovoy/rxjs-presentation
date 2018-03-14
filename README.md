@@ -1,6 +1,6 @@
 # rxjs-presentation
 
-# 01 Merge
+# Merge
 
 ```
 $('document').ready(function () {
@@ -15,7 +15,7 @@ Rx.Observable.merge(a,b)
     .subscribe(val => console.log(val));
 ```
 
-# 02 Concat
+# Concat
 
 ```
 $('document').ready(function () {
