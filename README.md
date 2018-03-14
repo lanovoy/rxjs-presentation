@@ -1,4 +1,6 @@
-# Merge
+# Combining Observables
+
+## Merge
 
 ```
 $('document').ready(function () {
@@ -16,7 +18,7 @@ Rx.Observable.merge(a,b)
     .subscribe(val => console.log(val));
 ```
 
-# Concat
+## Concat
 
 ```
 $('document').ready(function () {
@@ -34,20 +36,7 @@ Rx.Observable.concat(a,b)
     .subscribe(val => console.log(val));
 ```
 
-## Merge and Concat additional sample
-
-```
-// Simulate HTTP requests
-const getPostOne$ = Rx.Observable.timer(3000)
-    .mapTo('1st finished').startWith('1st started');
-const getPostTwo$ = Rx.Observable.timer(1000)
-    .mapTo('2nd finished').startWith('2nd started');
-
-Rx.Observable.merge(getPostOne$, getPostTwo$)
-    .subscribe(res => console.log(res));
-```
-
-# Race
+## Race
 
 ```
 $('document').ready(function () {
@@ -65,7 +54,9 @@ Rx.Observable.race(a,b)
     .subscribe(val => console.log(val));
 ```
 
-# mergeAll and mergeMap
+# Higher Level Observables - combining, projection with flattening
+
+## mergeAll and mergeMap
 
 ```
 $('document').ready(function () {
@@ -85,7 +76,7 @@ const h = Rx.Observable.interval(20).take(2)
 h.mergeAll().subscribe(val => console.log(val));
 ```
 
-# concatAll and concatMap
+## concatAll and concatMap
 
 ```
 $('document').ready(function () {
@@ -105,7 +96,7 @@ const h = Rx.Observable.interval(50).take(2)
 h.concatAll().subscribe(val => console.log(val));
 ```
 
-# switch and switchMap
+## switch and switchMap
 
 ```
 $('document').ready(function () {
@@ -128,7 +119,9 @@ h.switch().subscribe(val => console.log(val));
 
 ```
 
-# combineLatest
+# Operators
+
+## combineLatest
 
 ```
 $('document').ready(function () {
@@ -145,7 +138,7 @@ const b = Rx.Observable.interval(150).take(3)
 Rx.Observable.combineLatest(a,b).subscribe(val => console.log(val));
 ```
 
-# zip
+## zip
 
 ```
 $('document').ready(function () {
@@ -162,7 +155,7 @@ const b = Rx.Observable.interval(150).take(3)
 Rx.Observable.zip(a,b).subscribe(val => console.log(val));
 ```
 
-# forkJoin
+## forkJoin
 
 ```
 $('document').ready(function () {
@@ -179,7 +172,7 @@ const b = Rx.Observable.interval(150).take(3)
 Rx.Observable.forkJoin(a,b).subscribe(val => console.log(val));
 ```
 
-# withLatestFrom
+## withLatestFrom
 
 ```
 $('document').ready(function () {
