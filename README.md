@@ -149,63 +149,61 @@ $('document').ready(function () {
 ```
 $('document').ready(function () {
     $('#title').text('SWITCH');
-    $('#demo-img').attr("src", "");
+    $('#demo-img').attr("src", "http://reactivex.io/documentation/operators/images/switch.c.png");
 
-    var a = Rx.Observable.create(function (handle) {
+    const outerObservable = Rx.Observable.create((observer) => {
         console.log('%ccreated outer observable', 'color:red;');
 
-        setTimeout(function () {
-            handle.next('10ms-outer');
+        setTimeout(() => {
+            observer.next('10ms-outer');
         }, 10);
 
-        setTimeout(function () {
-            handle.next('550ms-outer')
+        setTimeout(() => {
+            observer.next('550ms-outer')
         }, 600);
 
-        setTimeout(function () {
-            handle.next('950ms-outer');
-            handle.complete();
+        setTimeout(() => {
+            observer.next('950ms-outer');
+            observer.complete();
         }, 900);
 
-        return function() {
+        return () => {
             console.log('%couter observable complete', 'color:red;');
         };
 
     });
 
-    var b = Rx.Observable.create(function (handle) {
+    const innerObservable = Rx.Observable.create((observer) => {
         console.log('%c  inner started', 'color:green;');
 
-        setTimeout(function () {
-            handle.next('  500ms-inner');
+        setTimeout(() => {
+            observer.next('  500ms-inner');
         }, 500);
 
-        setTimeout(function () {
-            handle.next('  1000ms-inner')
+        setTimeout(() => {
+            observer.next('  1000ms-inner')
         }, 1000);
 
-        setTimeout(function () {
-            handle.next('  1500ms-inner');
-            handle.complete();
+        setTimeout(() => {
+            observer.next('  1500ms-inner');
+            observer.complete();
         }, 1500);
 
-        return function() {
+        return () => {
             console.log('%c  inner complete', 'color:green;');
         };
 
     });
 
 
-    a.do(function (val) {
+    outerObservable.do(val => {
         console.log(val);
-    }).map(function () {
-        return b;
-    }).switch()
+    }).map(() => innerObservable)
+        .switch()
         .subscribe({
             next: function (val) {
                 console.log(val);
             }
         });
-
 });
 ```
