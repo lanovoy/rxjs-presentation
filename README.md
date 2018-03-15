@@ -2,7 +2,7 @@
 
 ## Observables
 
-```
+```JavaScript
 var observable = Rx.Observable.create(function subscribe(observer) {
   var id = setInterval(() => {
     observer.next('hi')
