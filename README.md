@@ -12,7 +12,7 @@ var observable = Rx.Observable.create(function subscribe(observer) {
 
 ## Observers
 
-```
+```JavaScript
 var observer = {
   next: x => console.log('Observer got a next value: ' + x),
   error: err => console.error('Observer got an error: ' + err),
@@ -22,7 +22,7 @@ var observer = {
 
 ## Subscriptions
 
-```
+```JavaScript
 var observable = Rx.Observable.interval(1000);
 var subscription = observable.subscribe(x => console.log(x));
 // Later:
@@ -32,7 +32,8 @@ subscription.unsubscribe();
 ```
 
 ## Subjects
-```
+
+```JavaScript
 var subject = new Rx.Subject();
 
 subject.subscribe({
@@ -47,7 +48,8 @@ subject.next(2);
 ```
 
 ## Behavior Subjects
-```
+
+```JavaScript
 var subject = new Rx.BehaviorSubject(0); // 0 is the initial value
 
 subject.subscribe({
@@ -68,7 +70,7 @@ subject.next(3);
 
 ## Merge
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('MERGE');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*VAHTR8hAmOpum8IFrdzZlA.gif");
@@ -86,7 +88,7 @@ Rx.Observable.merge(a,b)
 
 ## Concat
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('CONCAT');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*I_fiTaQJG0Lm8SOyttFxHQ.gif");;
@@ -104,7 +106,7 @@ Rx.Observable.concat(a,b)
 
 ## Race
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('RACE');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*rMlMQMO2oRecJ408HH4ngQ.gif");
@@ -124,7 +126,7 @@ Rx.Observable.race(a,b)
 
 ## mergeAll and mergeMap
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('MERGE ALL');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*yD7NacIon9ohZT_pKS_04w.gif");
@@ -144,7 +146,7 @@ h.mergeAll().subscribe(val => console.log(val));
 
 ## concatAll and concatMap
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('CONCAT ALL');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*d1eoR9PyxBPg9btT4o6pGA.gif");
@@ -164,7 +166,7 @@ h.concatAll().subscribe(val => console.log(val));
 
 ## switch and switchMap
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('SWITCH');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*OZQs3nPxTxE3IZ-pTnDxLQ.gif");
@@ -185,11 +187,11 @@ h.switch().subscribe(val => console.log(val));
 
 ```
 
-# Operators
+# More operators
 
 ## combineLatest
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('COMBINE LATEST');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*uh5Db_W2CixKpK9LlYkURQ.gif");
@@ -206,7 +208,7 @@ Rx.Observable.combineLatest(a,b).subscribe(val => console.log(val));
 
 ## zip
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('ZIP');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*Cu-uSXNacbLlpWjm35C3_Q.gif");
@@ -223,7 +225,7 @@ Rx.Observable.zip(a,b).subscribe(val => console.log(val));
 
 ## forkJoin
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('FORK JOIN');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*dsH5d-_64TXBFlEr7YCAqQ.gif");
@@ -240,7 +242,7 @@ Rx.Observable.forkJoin(a,b).subscribe(val => console.log(val));
 
 ## withLatestFrom
 
-```
+```JavaScript
 $('document').ready(function () {
     $('#title').text('WITH LATEST FROM');
     $('#demo-img').attr("src", "https://cdn-images-1.medium.com/max/800/1*ZhM7RAp_LctDt7kuOuisGA.gif");
